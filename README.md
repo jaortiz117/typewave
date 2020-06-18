@@ -66,3 +66,13 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+## Color scheme:
+```
+/* CSS */
+--midnight-blue: hsla(234, 78%, 44%, 1);
+--royal-blue-dark: hsla(227, 74%, 35%, 1);
+--champagne: hsla(35, 18%, 96%, 1);
+--middle-red: hsla(10, 47%, 85%, 1);
+--carnelian: hsla(0, 84%, 74%, 1);
+```
