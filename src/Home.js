@@ -22,6 +22,10 @@ text-align: center;
   color: hsla(35, 18%, 96%, 1);
 }
 
+.m-red{
+  color: hsla(10, 47%, 85%, 1);
+}
+
 .centerblock{
   max-width: 1000px;
   min-width: 600px;
@@ -34,7 +38,7 @@ text-align: center;
 export function Home(){
   return (
     <Styles>
-      <div className="title champagne">
+      <div className="title m-red">
         Relax while typing.
       </div>
       <div className="centerblock">
