@@ -22,8 +22,8 @@ text-align: center;
   color: hsla(35, 18%, 96%, 1);
 }
 
-.m-red{
-  color: hsla(10, 47%, 85%, 1);
+.carnelian{
+  color: hsla(0, 84%, 74%, 1);
 }
 
 .centerblock{
@@ -38,7 +38,7 @@ text-align: center;
 export function Home(){
   return (
     <Styles>
-      <div className="title m-red">
+      <div className="title carnelian">
         Relax while typing.
       </div>
       <div className="centerblock">
