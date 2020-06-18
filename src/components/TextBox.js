@@ -38,21 +38,54 @@ const Styles = styled.div`
 }
 `;
 
-export function TextBox(props){
-  return (
-    <Styles>
-      <div className="text champagne">
-        Text. For the text we will create a function that fetches 45 - 60 random words from a list of the 200 most commonly used words in the english language. This text box has to be sized similar to input box and the font needs some oppacity so we apply full color whe a word is written
-      </div>
-      <input class=" bg-royal champagne input_area"
-        placeholder="start typing here..."
-        onChange={ props.handleInput }
-        autoFocus={true}
-        disabled={props.disabled}
-        value={props.input}>
-      </input>
-    </Styles>
-  );
+export class TextBox extends React.Component{
+  reset = (e) => {
+    this.setState({
+      input: "",
+      textEntered: false,
+      finished: false,
+      finalTime: null,
+      wpm: 0,
+      statusClass: ""
+    });
+    // return focus to input
+  }
+
+  handleInput = (e) => {
+    const input = e.target.value;
+    const textEntered = input !== '';
+    let finished = false;
+
+    if (this.state.quote === input) {
+      finished = true;
+    }
+
+    this.isCorrectSoFar();
+    this.setState({ input, textEntered, finished });
+    this.updateStatusClass()
+  }
+
+  isCorrectSoFar = () => {
+    const isCorrectSoFar = this.state.quote.includes(this.state.input);
+    console.log(isCorrectSoFar)
+    this.setState({isCorrectSoFar})
+  }
+  render(){
+    return (
+      <Styles>
+        <div className="text champagne">
+          Text. For the text we will create a function that fetches 45 - 60 random words from a list of the 200 most commonly used words in the english language. This text box has to be sized similar to input box and the font needs some oppacity so we apply full color whe a word is written
+        </div>
+        <input class=" bg-royal champagne input_area"
+          placeholder="start typing here..."
+          onChange={ this.props.handleInput }
+          autoFocus={true}
+          disabled={this.props.disabled}
+          value={this.props.input}>
+        </input>
+      </Styles>
+    );
+  }
 }
 
 

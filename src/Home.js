@@ -35,49 +35,15 @@ text-align: center;
 }
 `;
 
-export class Home extends React.Component{
-  reset = (e) => {
-    this.setState({
-      input: "",
-      textEntered: false,
-      finished: false,
-      finalTime: null,
-      wpm: 0,
-      statusClass: ""
-    });
-    // return focus to input
-  }
-
-  handleInput = (e) => {
-    const input = e.target.value;
-    const textEntered = input !== '';
-    let finished = false;
-
-    if (this.state.quote === input) {
-      finished = true;
-    }
-
-    this.isCorrectSoFar();
-    this.setState({ input, textEntered, finished });
-    this.updateStatusClass()
-  }
-
-  isCorrectSoFar = () => {
-    const isCorrectSoFar = this.state.quote.includes(this.state.input);
-    console.log(isCorrectSoFar)
-    this.setState({isCorrectSoFar})
-  }
-
-  render(){
-    return (
-      <Styles>
-        <div className="title carnelian">
-          Relax while typing.
-        </div>
-        <div className="centerblock">
-          <TextBox />
-        </div>
-      </Styles>
-    );
-  }
+export function Home(){
+  return (
+    <Styles>
+      <div className="title carnelian">
+        Relax while typing.
+      </div>
+      <div className="centerblock">
+        <TextBox />
+      </div>
+    </Styles>
+  );
 }
