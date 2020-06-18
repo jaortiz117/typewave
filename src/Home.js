@@ -6,6 +6,8 @@ import { TextBox } from './components/TextBox'
 import { Result } from './components/Result'
 
 const Styles = styled.div`
+text-align: center;
+
 .bg-royal{
   background-color: hsla(227, 74%, 35%, 1);
 }
@@ -19,13 +21,25 @@ const Styles = styled.div`
 .champagne{
   color: hsla(35, 18%, 96%, 1);
 }
+
+.centerblock{
+  max-width: 1000px;
+  min-width: 600px;
+  margin: 0 auto;
+  align-items: center;
+}
 }
 `;
 
 export function Home(){
   return (
     <Styles>
-
-      </Styles>
-    );
-  }
+      <div className="title champagne">
+        Relax while typing.
+      </div>
+      <div className="centerblock">
+        <TextBox />
+      </div>
+    </Styles>
+  );
+}

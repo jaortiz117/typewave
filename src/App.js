@@ -2,6 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import styled from 'styled-components'
 import { NavigationBar } from './NavigationBar'
+import { Home } from './Home'
 import './App.css';
 
 const Styles = styled.div`{
@@ -16,8 +17,8 @@ function App() {
     <React.Fragment>
       <Styles>
         <NavigationBar />
-        // Home
-        <p>elo wol</p>
+        <Home />
+        <p>Footer placeholder</p>
       </Styles>
     </React.Fragment>
   );
