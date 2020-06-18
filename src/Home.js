@@ -2,6 +2,9 @@ import React from 'react'
 import { Navbar } from 'react-bootstrap'
 import styled from 'styled-components'
 
+import { TextBox } from './components/TextBox'
+import { Result } from './components/Result'
+
 const Styles = styled.div`
 .bg-royal{
   background-color: hsla(227, 74%, 35%, 1);
@@ -22,7 +25,7 @@ const Styles = styled.div`
 export function Home(){
   return (
     <Styles>
-      
+
       </Styles>
     );
   }
