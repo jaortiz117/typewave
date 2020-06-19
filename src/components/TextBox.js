@@ -48,6 +48,7 @@ export class TextBox extends React.Component{
  }
 
  componentDidMount(){
+   //here we make the call to a function that fetches the random words
    this.setState({quote: "Text. For the text we will create a function that fetches 45 - 60 random words from a list of the 200 most commonly used words in the english language. This text box has to be sized similar to input box and the font needs some oppacity so we apply full color whe a word is written"})
  }
   reset = (e) => {
@@ -91,6 +92,15 @@ export class TextBox extends React.Component{
   // }
 
   isCorrectSoFar = () => {
+    //pseudo code:
+    // have quote be a list of words
+    // each of the inserted words gets inserted into a list
+    // we compare all the entries of each list directly until inserted.length - 1
+
+    // we just have to really check the last entry in inserted tho, all the previous entries have already been checked
+    // so what we should do is, instead of checking all entries until inserted.length - 1
+    // we only have to compare the strings in inserted.length - 1 and quote[inserted.length - 1]
+    // We need to make sure that we append into inserted on spacebar hit
     const isCorrectSoFar = this.state.quote.includes(this.state.input);
     console.log(isCorrectSoFar)
     this.setState({isCorrectSoFar})
