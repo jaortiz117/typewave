@@ -74,8 +74,21 @@ export class TextBox extends React.Component{
 
     // this.isCorrectSoFar();
     // this.setState({ input, textEntered, finished });
-    // this.updateStatusClass()
+    // this.updateColors()
   }
+
+  // updateColors = () => {
+  //   //function to be used to color quote text depending on status
+  //   let statusClass = "is-white";
+  //
+  //   if (this.state.textEntered && this.state.isCorrectSoFar) {
+  //     statusClass = "is-primary";
+  //   } else if (this.state.textEntered && !this.state.isCorrectSoFar) {
+  //     statusClass = "is-danger";
+  //   }
+  //
+  //   this.setState({ statusClass });//we have to change this to work letter by letter
+  // }
 
   isCorrectSoFar = () => {
     const isCorrectSoFar = this.state.quote.includes(this.state.input);
