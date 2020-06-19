@@ -120,20 +120,19 @@ export class TextBox extends React.Component{
       for(var i=0; i<smallest; i++){
         // this.colorLetter(i, idx, word.charAt(i))
         var char = this.state.quote[idx].charAt(i);
-          if(word.charAt(i) !== this.state.quote[idx].charAt(i)){
-            // this.wordRefs[idx].innerText = this.setCharAt(this.wordRefs[idx].innerText, i, "<span class=\"carnelion\">"+ char+ "</span>");
-            this.wordRefs[idx].classList.add('carnelian')
-            this.wordRefs[idx].classList.remove('champagne')
-          }
-          else if(word.charAt(i) === this.state.quote[idx].charAt(i)){
-            // this.wordRefs[idx].innerText = this.setCharAt(this.wordRefs[idx].innerText, i, "<span class=\"champagne\">"+ char+ "</span>");
-            this.wordRefs[idx].classList.add('champagne')
-            this.wordRefs[idx].classList.remove('carnelian')
-          }
-          else{
-            this.wordRefs[idx].classList.remove('champagne')
-            this.wordRefs[idx].classList.remove('carnelian')
-          }
+        this.wordRefs[idx].classList.remove('champagne');
+        this.wordRefs[idx].classList.remove('carnelian');
+
+        if(word.charAt(i) === this.state.quote[idx].charAt(i)){
+          // this.wordRefs[idx].innerText = this.setCharAt(this.wordRefs[idx].innerText, i, "<span class=\"champagne\">"+ char+ "</span>");
+          this.wordRefs[idx].classList.add('champagne')
+          this.wordRefs[idx].classList.remove('carnelian')
+        }
+        if(word.charAt(i) !== this.state.quote[idx].charAt(i)){
+          // this.wordRefs[idx].innerText = this.setCharAt(this.wordRefs[idx].innerText, i, "<span class=\"carnelion\">"+ char+ "</span>");
+          this.wordRefs[idx].classList.add('carnelian')
+          this.wordRefs[idx].classList.remove('champagne')
+        }
       }
     }
   );
