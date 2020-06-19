@@ -49,14 +49,17 @@ export class TextBox extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      quote: '',
       input: '',
-      inserted: '',
-      finished: false
+      finished: false,
+      inserted: [],
+      quote: ["loading", "please", "wait"]
     };
     this.handleInput = this.handleInput.bind(this);
     this.getQuote = this.getQuote.bind(this);
     this.updateColors = this.updateColors.bind(this);
+    this.renderLetters = this.renderLetters.bind(this);
+
+    this.wordRefs = [];
   }
 
   getQuote(){
@@ -65,13 +68,14 @@ export class TextBox extends React.Component{
   }
 
   componentDidMount(){
-    this.setState({inserted: []})
     //here we make the call to a function that fetches the random words we will save an array of single words
     this.getQuote();
   }
+
   reset = (e) => {
     this.setState({
       input: "",
+      inserted: [],
       textEntered: false,
       finished: false,
       finalTime: null,
@@ -97,68 +101,72 @@ export class TextBox extends React.Component{
     }
     this.state.inserted.push(input);
 
-    this.correctSoFar();
     this.setState({ input, textEntered });
-    console.log(this.state)
+    // console.log(this.wordRefs[0]);
   }
 
   updateColors = () => {
-    return (
-      <div>
-        {this.state.quote} <span className="carnelian">o</span>
-    </div>
+    // Pseudo code:
+    //
+    // we have the quote list
+    // we have the inserted list
+    // we will iterate over inserted list stopping on whichever word is shortest
+    //   on correctly typed letters we change to champagne (default will be m-red)
+    //   incorrect letters will be changed to carnelion
+    //TODO individual letter changing to change these letters we will do: replace(letter, '<span class="carnelion">o</span>');
+    this.state.inserted.map((word, idx) =>
+    {
+      const smallest = Math.min(word.length, this.state.quote[idx].length);
+      for(var i=0; i<smallest; i++){
+        // this.colorLetter(i, idx, word.charAt(i))
+        var char = this.state.quote[idx].charAt(i);
+          if(word.charAt(i) !== this.state.quote[idx].charAt(i)){
+            // this.wordRefs[idx].innerText = this.setCharAt(this.wordRefs[idx].innerText, i, "<span class=\"carnelion\">"+ char+ "</span>");
+            this.wordRefs[idx].classList.add('carnelian')
+            this.wordRefs[idx].classList.remove('champagne')
+          }
+          else if(word.charAt(i) === this.state.quote[idx].charAt(i)){
+            // this.wordRefs[idx].innerText = this.setCharAt(this.wordRefs[idx].innerText, i, "<span class=\"champagne\">"+ char+ "</span>");
+            this.wordRefs[idx].classList.add('champagne')
+            this.wordRefs[idx].classList.remove('carnelian')
+          }
+          else{
+            this.wordRefs[idx].classList.remove('champagne')
+            this.wordRefs[idx].classList.remove('carnelian')
+          }
+      }
+    }
   );
-  // Pseudo code:
-  //
-  // we have the quote list
-  // we have the correctSoFar list
-  // we will iterate over correctSoFar list
-  //   on correctly typed letters we change to champagne (default will be m-red)
-  //   incorrect letters will be changed to carnelion
-
-  // to change these letters we will do: replace(letter, '<span class="carnelion">o</span>');
-
-  //   //function to be used to color quote text depending on status
-  //   let statusClass = "is-white";
-  //
-  //   if (this.state.textEntered && this.state.isCorrectSoFar) {
-  //     statusClass = "is-primary";
-  //   } else if (this.state.textEntered && !this.state.isCorrectSoFar) {
-  //     statusClass = "is-danger";
-  //   }
-  //
-  //   this.setState({ statusClass });//we have to change this to work letter by letter
 }
 
-correctSoFar = () => {
-  //pseudo code:
-  // have quote be a list of words
-  // each of the inserted words gets inserted into a list
-  // we compare all the entries of each list directly until inserted.length - 1
-
-  // we just have to really check the last entry in inserted tho, all the previous entries have already been checked
-  // so what we should do is, instead of checking all entries until inserted.length - 1
-  // we only have to compare the strings in inserted.length - 1 and quote[inserted.length - 1]
-  // We need to make sure that we append into inserted on spacebar hit
-
-  // the isCorrectSoFar object shall contain a list of tuples. left is idx within quote, right is set of indexes with errors (the letters with errors)
-  // this value will be used by update colors method
-  const isCorrectSoFar = this.state.quote.includes(this.state.input);
-  console.log(isCorrectSoFar)
-  this.setState({isCorrectSoFar})
+setCharAt = (str,index,chr) => {
+  if(index > str.length-1) return str;
+  return str.substr(0,index) + chr + str.substr(index+1);
 }
+
+renderLetters(){
+  this.updateColors();
+  return(
+    <div>
+      {
+        this.state.quote.map((word, idx) =>
+        <span id="word" ref={(ref) => {this.wordRefs[idx] = ref; return true;}}>{word} </span>
+      )
+    }
+  </div>
+);
+}
+
 render(){
   return (
     <Styles>
-      <div className="text champagne">
-        {this.updateColors()}
-        {/*this.state.quote*/}
+      <div className="text m-red">
+        {this.renderLetters()}
       </div>
       <input className=" bg-royal champagne input_area"
         placeholder="start typing here..."
         onChange={ this.handleInput }
         autoFocus={true}
-        disabled={this.props.disabled}
         >
       </input>
     </Styles>
