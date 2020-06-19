@@ -1,5 +1,4 @@
 import React from 'react'
-import { Navbar } from 'react-bootstrap'
 import styled from 'styled-components'
 
 const Styles = styled.div`
@@ -50,7 +49,10 @@ export class TextBox extends React.Component{
   constructor(props) {
     super(props);
     this.state = {
-      quote: ''
+      quote: '',
+      input: '',
+      inserted: '',
+      finished: false
     };
     this.handleInput = this.handleInput.bind(this);
     this.getQuote = this.getQuote.bind(this);
@@ -58,10 +60,12 @@ export class TextBox extends React.Component{
   }
 
   getQuote(){
-    this.setState({quote: "Text. For the text we will create a function that fetches 45 - 60 random words from a list of the 200 most commonly used words in the english language. This text box has to be sized similar to input box and the font needs some oppacity so we apply full color whe a word is written"})
+    var temp_quote = "For the text we will create a function that fetches 45 60 random words from a list of the 200 most commonly used words in the english language. This text box has to be sized similar to input box and the font needs some oppacity so we apply full color whe a word is written".split(" ");
+    this.setState({quote: temp_quote})
   }
 
   componentDidMount(){
+    this.setState({inserted: []})
     //here we make the call to a function that fetches the random words we will save an array of single words
     this.getQuote();
   }
@@ -78,17 +82,24 @@ export class TextBox extends React.Component{
   }
 
   handleInput = (e) => {
-    const input = e.target.value;
+    var input = e.target.value;
     const textEntered = input !== '';
-    console.log(input + " | "+ "last input: " + input.slice(-1))//we are seeing the last character and all characters
-    let finished = false;
 
-    // if (this.state.quote === input) {
-    //   finished = true;
-    // }
+    if(input.slice(-1) === " "){
+      if(this.state.inserted.length === this.state.quote.length){
+        this.setState({finished: true});
+      }
+      input = ''
+      e.target.value = ''
+    }
+    else{
+      this.state.inserted.pop();
+    }
+    this.state.inserted.push(input);
 
-    // this.isCorrectSoFar();
-    // this.setState({ input, textEntered, finished });
+    this.correctSoFar();
+    this.setState({ input, textEntered });
+    console.log(this.state)
   }
 
   updateColors = () => {
