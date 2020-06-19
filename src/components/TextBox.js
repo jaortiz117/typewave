@@ -39,6 +39,17 @@ const Styles = styled.div`
 `;
 
 export class TextBox extends React.Component{
+  constructor(props) {
+   super(props);
+   this.state = {
+     quote: ''
+   };
+   this.handleInput = this.handleInput.bind(this);
+ }
+
+ componentDidMount(){
+   this.setState({quote: "Text. For the text we will create a function that fetches 45 - 60 random words from a list of the 200 most commonly used words in the english language. This text box has to be sized similar to input box and the font needs some oppacity so we apply full color whe a word is written"})
+ }
   reset = (e) => {
     this.setState({
       input: "",
@@ -54,15 +65,16 @@ export class TextBox extends React.Component{
   handleInput = (e) => {
     const input = e.target.value;
     const textEntered = input !== '';
+    console.log(input + " | "+ "last input: " + input.slice(-1))//we are seeing the last character and all characters
     let finished = false;
 
-    if (this.state.quote === input) {
-      finished = true;
-    }
+    // if (this.state.quote === input) {
+    //   finished = true;
+    // }
 
-    this.isCorrectSoFar();
-    this.setState({ input, textEntered, finished });
-    this.updateStatusClass()
+    // this.isCorrectSoFar();
+    // this.setState({ input, textEntered, finished });
+    // this.updateStatusClass()
   }
 
   isCorrectSoFar = () => {
@@ -74,14 +86,14 @@ export class TextBox extends React.Component{
     return (
       <Styles>
         <div className="text champagne">
-          Text. For the text we will create a function that fetches 45 - 60 random words from a list of the 200 most commonly used words in the english language. This text box has to be sized similar to input box and the font needs some oppacity so we apply full color whe a word is written
+          {this.state.quote}
         </div>
-        <input class=" bg-royal champagne input_area"
+        <input className=" bg-royal champagne input_area"
           placeholder="start typing here..."
-          onChange={ this.props.handleInput }
+          onChange={ this.handleInput }
           autoFocus={true}
           disabled={this.props.disabled}
-          value={this.props.input}>
+          >
         </input>
       </Styles>
     );
