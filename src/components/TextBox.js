@@ -91,7 +91,7 @@ export class TextBox extends React.Component{
     const textEntered = input !== '';
 
     if(input.slice(-1) === " "){
-      if(this.state.inserted.length === this.state.quote.length){
+      if(this.state.inserted.length >= this.state.quote.length){
         this.setState({finished: true});
       }
       input = ''
@@ -116,32 +116,34 @@ export class TextBox extends React.Component{
     //   incorrect letters will be changed to carnelian
     this.state.inserted.map((word, idx) =>
     {
-      const smallest = Math.min(word.length, this.state.quote[idx].length);
-      this.wordRefs[idx].classList.remove('champagne');
-      this.wordRefs[idx].classList.remove('carnelian');
-      this.wordRefs[idx].innerHTML = this.state.quote[idx] + " ";
+      try{
+        const smallest = Math.min(word.length, this.state.quote[idx].length);
+        this.wordRefs[idx].classList.remove('champagne');
+        this.wordRefs[idx].classList.remove('carnelian');
+        this.wordRefs[idx].innerHTML = this.state.quote[idx] + " ";
 
-      for(var i=0; i<smallest; i++){
-        // this.colorLetter(i, idx, word.charAt(i))
-        var char = this.state.quote[idx].charAt(i);
+        for(var i=0; i<smallest; i++){
+          // this.colorLetter(i, idx, word.charAt(i))
+          var char = this.state.quote[idx].charAt(i);
 
-        const inner = this.wordRefs[idx].innerHTML;
-        const textLength = this.wordRefs[idx].innerText.length;
+          const inner = this.wordRefs[idx].innerHTML;
+          const textLength = this.wordRefs[idx].innerText.length;
 
-        if(word.charAt(i) === this.state.quote[idx].charAt(i)){
-          this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"champagne\">"+ char+ "</span>");
-        //   this.wordRefs[idx].classList.add('champagne')
-        //   this.wordRefs[idx].classList.remove('carnelian')
+          if(word.charAt(i) === this.state.quote[idx].charAt(i)){
+            this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"champagne\">"+ char+ "</span>");
+            //   this.wordRefs[idx].classList.add('champagne')
+            //   this.wordRefs[idx].classList.remove('carnelian')
+          }
+          if(word.charAt(i) !== this.state.quote[idx].charAt(i)){
+            var temp = inner.length - textLength + i;
+            this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"carnelian\">"+ char+ "</span>");
+            // this.wordRefs[idx].classList.add('carnelian')
+            // this.wordRefs[idx].classList.remove('champagne')
+          }
         }
-        if(word.charAt(i) !== this.state.quote[idx].charAt(i)){
-          var temp = inner.length - textLength + i;
-          console.log("inserted i = " + temp);
-          console.log("inner length i = " + inner.length);
-          console.log("inner i = " + inner);
-          this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"carnelian\">"+ char+ "</span>");
-          // this.wordRefs[idx].classList.add('carnelian')
-          // this.wordRefs[idx].classList.remove('champagne')
-        }
+      }
+      catch(err){
+        return
       }
     }
   );
