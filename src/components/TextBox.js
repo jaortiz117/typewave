@@ -80,7 +80,8 @@ export class TextBox extends React.Component{
       finished: false,
       finalTime: null,
       wpm: 0,
-      statusClass: ""
+      statusClass: "",
+      errors: 0
     });
     // return focus to input
   }
@@ -112,26 +113,34 @@ export class TextBox extends React.Component{
     // we have the inserted list
     // we will iterate over inserted list stopping on whichever word is shortest
     //   on correctly typed letters we change to champagne (default will be m-red)
-    //   incorrect letters will be changed to carnelion
-    //TODO individual letter changing to change these letters we will do: replace(letter, '<span class="carnelion">o</span>');
+    //   incorrect letters will be changed to carnelian
     this.state.inserted.map((word, idx) =>
     {
       const smallest = Math.min(word.length, this.state.quote[idx].length);
+      this.wordRefs[idx].classList.remove('champagne');
+      this.wordRefs[idx].classList.remove('carnelian');
+      this.wordRefs[idx].innerHTML = this.state.quote[idx] + " ";
+
       for(var i=0; i<smallest; i++){
         // this.colorLetter(i, idx, word.charAt(i))
         var char = this.state.quote[idx].charAt(i);
-        this.wordRefs[idx].classList.remove('champagne');
-        this.wordRefs[idx].classList.remove('carnelian');
+
+        const inner = this.wordRefs[idx].innerHTML;
+        const textLength = this.wordRefs[idx].innerText.length;
 
         if(word.charAt(i) === this.state.quote[idx].charAt(i)){
-          // this.wordRefs[idx].innerText = this.setCharAt(this.wordRefs[idx].innerText, i, "<span class=\"champagne\">"+ char+ "</span>");
-          this.wordRefs[idx].classList.add('champagne')
-          this.wordRefs[idx].classList.remove('carnelian')
+          this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"champagne\">"+ char+ "</span>");
+        //   this.wordRefs[idx].classList.add('champagne')
+        //   this.wordRefs[idx].classList.remove('carnelian')
         }
         if(word.charAt(i) !== this.state.quote[idx].charAt(i)){
-          // this.wordRefs[idx].innerText = this.setCharAt(this.wordRefs[idx].innerText, i, "<span class=\"carnelion\">"+ char+ "</span>");
-          this.wordRefs[idx].classList.add('carnelian')
-          this.wordRefs[idx].classList.remove('champagne')
+          var temp = inner.length - textLength + i;
+          console.log("inserted i = " + temp);
+          console.log("inner length i = " + inner.length);
+          console.log("inner i = " + inner);
+          this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"carnelian\">"+ char+ "</span>");
+          // this.wordRefs[idx].classList.add('carnelian')
+          // this.wordRefs[idx].classList.remove('champagne')
         }
       }
     }
