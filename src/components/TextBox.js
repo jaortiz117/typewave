@@ -56,13 +56,14 @@ export class TextBox extends React.Component{
       textEntered: false,
       finalTime: null,
       wpm: 0,
-      errors: 0,
+      errors: [],
       currIdx: 0
     };
     this.handleInput = this.handleInput.bind(this);
     this.getQuote = this.getQuote.bind(this);
     this.updateColors = this.updateColors.bind(this);
     this.renderLetters = this.renderLetters.bind(this);
+    this.errorCounter = this.errorCounter.bind(this);
 
     this.wordRefs = [];
   }
@@ -73,7 +74,7 @@ export class TextBox extends React.Component{
   }
 
   componentDidMount(){
-    //here we make the call to a function that fetches the random words we will save an array of single words
+    //TODO here we make the call to a function that fetches the random words we will save an array of single words
     this.getQuote();
   }
 
@@ -85,7 +86,7 @@ export class TextBox extends React.Component{
       finished: false,
       finalTime: null,
       wpm: 0,
-      errors: 0,
+      errors: [],
       currIdx: 0
     });
     // return focus to input
@@ -109,17 +110,9 @@ export class TextBox extends React.Component{
     this.state.inserted.push(input);
 
     this.setState({ input, textEntered });
-    // console.log(this.wordRefs[0]);
   }
 
   updateColors = () => {
-    // Pseudo code:
-    //
-    // we have the quote list
-    // we have the inserted list
-    // we will iterate over inserted list stopping on whichever word is shortest
-    //   on correctly typed letters we change to champagne (default will be m-red)
-    //   incorrect letters will be changed to carnelian
     const idx = this.state.currIdx;
     const word = this.state.inserted[idx];
     try{
@@ -128,8 +121,9 @@ export class TextBox extends React.Component{
       this.wordRefs[idx].classList.remove('carnelian');
       this.wordRefs[idx].innerHTML = this.state.quote[idx] + " ";
 
+      var errorsInWord = 0;
+
       for(var i=0; i<smallest; i++){
-        // this.colorLetter(i, idx, word.charAt(i))
         var char = this.state.quote[idx].charAt(i);
 
         const inner = this.wordRefs[idx].innerHTML;
@@ -137,19 +131,26 @@ export class TextBox extends React.Component{
 
         if(word.charAt(i) === this.state.quote[idx].charAt(i)){
           this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"champagne\">"+ char+ "</span>");
-          //   this.wordRefs[idx].classList.add('champagne')
-          //   this.wordRefs[idx].classList.remove('carnelian')
         }
         if(word.charAt(i) !== this.state.quote[idx].charAt(i)){
-          var temp = inner.length - textLength + i;
           this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"carnelian\">"+ char+ "</span>");
-          // this.wordRefs[idx].classList.add('carnelian')
-          // this.wordRefs[idx].classList.remove('champagne')
+
+          errorsInWord += 1;
         }
       }
+      this.errorCounter(idx, errorsInWord);
     }
     catch(err){
       return
+    }
+  }
+
+  errorCounter = (idx, errors) => {
+    if(typeof this.state.errors[idx] === 'undefined'){
+      this.state.errors.push(errors);
+    }
+    else{
+      this.state.errors[idx] = errors;
     }
   }
 
@@ -208,4 +209,4 @@ render(){
 //   - clear the text box
 //   - if word is wrong color red, if correct color properly
 // - when the user starts typing we start the timer.
-// - when timer reaches 0 we return the result modal
+// - when user is done with word set we return result modal
