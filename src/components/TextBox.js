@@ -52,7 +52,12 @@ export class TextBox extends React.Component{
       input: '',
       finished: false,
       inserted: [],
-      quote: ["loading", "please", "wait"]
+      quote: ["loading", "please", "wait"],
+      textEntered: false,
+      finalTime: null,
+      wpm: 0,
+      errors: 0,
+      currIdx: 0
     };
     this.handleInput = this.handleInput.bind(this);
     this.getQuote = this.getQuote.bind(this);
@@ -80,8 +85,8 @@ export class TextBox extends React.Component{
       finished: false,
       finalTime: null,
       wpm: 0,
-      statusClass: "",
-      errors: 0
+      errors: 0,
+      currIdx: 0
     });
     // return focus to input
   }
@@ -94,6 +99,7 @@ export class TextBox extends React.Component{
       if(this.state.inserted.length >= this.state.quote.length){
         this.setState({finished: true});
       }
+      this.setState({currIdx: this.state.currIdx + 1});
       input = ''
       e.target.value = ''
     }
@@ -114,57 +120,55 @@ export class TextBox extends React.Component{
     // we will iterate over inserted list stopping on whichever word is shortest
     //   on correctly typed letters we change to champagne (default will be m-red)
     //   incorrect letters will be changed to carnelian
-    this.state.inserted.map((word, idx) =>
-    {
-      try{
-        const smallest = Math.min(word.length, this.state.quote[idx].length);
-        this.wordRefs[idx].classList.remove('champagne');
-        this.wordRefs[idx].classList.remove('carnelian');
-        this.wordRefs[idx].innerHTML = this.state.quote[idx] + " ";
+    const idx = this.state.currIdx;
+    const word = this.state.inserted[idx];
+    try{
+      const smallest = Math.min(word.length, this.state.quote[idx].length);
+      this.wordRefs[idx].classList.remove('champagne');
+      this.wordRefs[idx].classList.remove('carnelian');
+      this.wordRefs[idx].innerHTML = this.state.quote[idx] + " ";
 
-        for(var i=0; i<smallest; i++){
-          // this.colorLetter(i, idx, word.charAt(i))
-          var char = this.state.quote[idx].charAt(i);
+      for(var i=0; i<smallest; i++){
+        // this.colorLetter(i, idx, word.charAt(i))
+        var char = this.state.quote[idx].charAt(i);
 
-          const inner = this.wordRefs[idx].innerHTML;
-          const textLength = this.wordRefs[idx].innerText.length;
+        const inner = this.wordRefs[idx].innerHTML;
+        const textLength = this.wordRefs[idx].innerText.length;
 
-          if(word.charAt(i) === this.state.quote[idx].charAt(i)){
-            this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"champagne\">"+ char+ "</span>");
-            //   this.wordRefs[idx].classList.add('champagne')
-            //   this.wordRefs[idx].classList.remove('carnelian')
-          }
-          if(word.charAt(i) !== this.state.quote[idx].charAt(i)){
-            var temp = inner.length - textLength + i;
-            this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"carnelian\">"+ char+ "</span>");
-            // this.wordRefs[idx].classList.add('carnelian')
-            // this.wordRefs[idx].classList.remove('champagne')
-          }
+        if(word.charAt(i) === this.state.quote[idx].charAt(i)){
+          this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"champagne\">"+ char+ "</span>");
+          //   this.wordRefs[idx].classList.add('champagne')
+          //   this.wordRefs[idx].classList.remove('carnelian')
+        }
+        if(word.charAt(i) !== this.state.quote[idx].charAt(i)){
+          var temp = inner.length - textLength + i;
+          this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"carnelian\">"+ char+ "</span>");
+          // this.wordRefs[idx].classList.add('carnelian')
+          // this.wordRefs[idx].classList.remove('champagne')
         }
       }
-      catch(err){
-        return
+    }
+    catch(err){
+      return
+    }
+  }
+
+  setCharAt = (str,index,chr) => {
+    if(index > str.length-1) return str;
+    return str.substr(0,index) + chr + str.substr(index+1);
+  }
+
+  renderLetters(){
+    this.updateColors();
+    return(
+      <div>
+        {
+          this.state.quote.map((word, idx) =>
+          <span id="word" ref={(ref) => {this.wordRefs[idx] = ref; return true;}}>{word} </span>
+        )
       }
-    }
+    </div>
   );
-}
-
-setCharAt = (str,index,chr) => {
-  if(index > str.length-1) return str;
-  return str.substr(0,index) + chr + str.substr(index+1);
-}
-
-renderLetters(){
-  this.updateColors();
-  return(
-    <div>
-      {
-        this.state.quote.map((word, idx) =>
-        <span id="word" ref={(ref) => {this.wordRefs[idx] = ref; return true;}}>{word} </span>
-      )
-    }
-  </div>
-);
 }
 
 render(){
