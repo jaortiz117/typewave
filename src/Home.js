@@ -32,22 +32,45 @@ text-align: center;
 `;
 
 export function Home(){
-  const [wpm, setWpm] = useState(0);
-  const [errors, setErrors] = useState(0);
+  // const [wpm, setWpm] = useState(0);
+  // const [errors, setErrors] = useState(0);
+  const [showResults, setShowResults] = useState(false);
+  const [results, setResults] = useState(null);
 
-  const items = [
-    {name: "wpm", label: "WPM", data: "123"},
-    {name: "errors", label: "Mistakes", data: "3"}
-  ];
+  const resultToggle = () => {
+    if(showResults){
+      setShowResults(false);
+    }
+    else{
+      setShowResults(true);
+    }
+  }
+
+  const renderResults = () => {
+    if(!showResults){
+      return null;
+    }
+
+    return (
+      <Result items={results} onClose={resultToggle}/>
+    );
+  }
 
   const handleResult = (errors, wpm) => {
-    setWpm(wpm);
-    setErrors(errors);
+    const items = [
+      {name: "wpm", label: "WPM", data: wpm},
+      {name: "errors", label: "Mistakes", data: errors}
+    ];
+
+    setResults(items);
+    console.log(items);
+    console.log(results);
+    resultToggle();
   }
 
   return (
     <Styles>
-      <Result items={items}/>
+      {renderResults()}
       <div className="title">
         Relax while typing.
       </div>

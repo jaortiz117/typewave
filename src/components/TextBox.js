@@ -87,6 +87,19 @@ export class TextBox extends React.Component{
   }
 
   reset = (e) => {
+    this.setState({
+      input: '',
+      finished: false,
+      inserted: [],
+      quote: ["loading", "please", "wait"],
+      textEntered: false,
+      startTime: null,
+      finalTime: null,
+      wpm: 0,
+      errors: [],
+      currIdx: 0,
+      started: false
+    })
     //TODO reset function bound to a key (left ctrl maybe) resets word list without refresh
     // return focus to input
   }
@@ -204,6 +217,7 @@ finishHandler(){
     const errors = this.calcErrors();
     const wpm = this.calcWpm();
     this.props.onFinish(errors, wpm);
+    this.reset()
   }
 }
 
