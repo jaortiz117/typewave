@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Navbar } from 'react-bootstrap'
 import styled from 'styled-components'
 
@@ -32,10 +32,19 @@ text-align: center;
 `;
 
 export function Home(){
+  const [wpm, setWpm] = useState(0);
+  const [errors, setErrors] = useState(0);
+
   const items = [
-      {name: "wpm", label: "WPM", data: "123"},
-      {name: "errors", label: "Mistakes", data: "3"}
-    ];
+    {name: "wpm", label: "WPM", data: "123"},
+    {name: "errors", label: "Mistakes", data: "3"}
+  ];
+
+  const handleResult = (errors, wpm) => {
+    setWpm(wpm);
+    setErrors(errors);
+  }
+
   return (
     <Styles>
       <Result items={items}/>
@@ -43,7 +52,7 @@ export function Home(){
         Relax while typing.
       </div>
       <div className="centerblock">
-        <TextBox />
+        <TextBox onFinish={handleResult}/>
       </div>
     </Styles>
   );

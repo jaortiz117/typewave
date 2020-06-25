@@ -58,16 +58,19 @@ export class TextBox extends React.Component{
       inserted: [],
       quote: ["loading", "please", "wait"],
       textEntered: false,
+      startTime: null,
       finalTime: null,
       wpm: 0,
       errors: [],
-      currIdx: 0
+      currIdx: 0,
+      started: false
     };
     this.handleInput = this.handleInput.bind(this);
     this.getQuote = this.getQuote.bind(this);
     this.updateColors = this.updateColors.bind(this);
     this.renderLetters = this.renderLetters.bind(this);
     this.errorCounter = this.errorCounter.bind(this);
+    this.finishHandler = this.finishHandler.bind(this);
 
     this.wordRefs = [];
   }
@@ -84,16 +87,7 @@ export class TextBox extends React.Component{
   }
 
   reset = (e) => {
-    this.setState({
-      input: "",
-      inserted: [],
-      textEntered: false,
-      finished: false,
-      finalTime: null,
-      wpm: 0,
-      errors: [],
-      currIdx: 0
-    });
+    //TODO reset function bound to a key (left ctrl maybe) resets word list without refresh
     // return focus to input
   }
 
@@ -101,9 +95,20 @@ export class TextBox extends React.Component{
     var input = e.target.value;
     const textEntered = input !== '';
 
+    if(!this.state.started){
+      this.setState({
+        started: true,
+        startTime: Date.now()
+      })
+    }
+
     if(input.slice(-1) === " "){
       if(this.state.inserted.length >= this.state.quote.length){
-        this.setState({finished: true});
+        this.setState({
+          finished: true,
+          started:false,
+          finalTime: Date.now()
+        });
       }
       this.setState({currIdx: this.state.currIdx + 1});
       input = ''
@@ -177,11 +182,37 @@ export class TextBox extends React.Component{
   );
 }
 
+calcErrors = () => {
+  var result = 0;
+
+  this.state.errors.map((n) => {
+    result += n;
+  });
+
+  return result;
+}
+
+calcWpm = () => {
+  const words = this.state.quote.length;
+  const totalTime = (this.state.finalTime - this.state.startTime) / 1000;
+
+  return Math.floor((words / totalTime) * 60);
+}
+
+finishHandler(){
+  if(this.state.finished){
+    const errors = this.calcErrors();
+    const wpm = this.calcWpm();
+    this.props.onFinish(errors, wpm);
+  }
+}
+
 render(){
   return (
     <Styles>
       <div className="text seaweed">
         {this.renderLetters()}
+        {this.finishHandler()}
       </div>
       <input className=" bg-indigo lapis input_area"
         placeholder="start typing here..."
