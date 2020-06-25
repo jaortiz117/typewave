@@ -1,3 +1,21 @@
+# Relaxing typing test
+Similar to other typing speed websites. this is built as a PWA so you can type while offline.
+
+Demo: [Coming Soon!](#)
+
+## Features:
+- Relaxing color scheme
+- PWA functionality, you can install locally.
+- write common English words
+- short, fast sessions
+
+## Run from source
+This project is setup as a react project. So requirements are the same as any [create-react-app](https://create-react-app.dev/docs/getting-started/) application.
+
+Once you have installed the pre-requisites, run `$ npm install` from the root folder of the project.
+
+After dependencies have installed run `npm run` to run the application.
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
