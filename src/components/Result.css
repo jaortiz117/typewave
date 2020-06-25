@@ -1,0 +1,15 @@
+.bg-indigo .modal-content{
+  background-color: #003d5bff;
+}
+
+.list-indigo, .list-group .list-group-item{
+  background-color: #003d5bff;
+}
+
+.result-modal .modal-content{
+  color: white;
+}
+
+.modal-content .close{
+  color:white;
+}
