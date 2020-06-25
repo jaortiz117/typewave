@@ -8,7 +8,7 @@ export function Result(props){
   const handleClose = () => {
     setShow(false);
     if(props.onClose instanceof Function){
-      props.onClose();
+      setTimeout(props.onClose, 0);
     }
   }
   const handleShow = () => setShow(true);
@@ -19,6 +19,7 @@ export function Result(props){
       <Modal
         show={show}
         onHide={handleClose}
+        onEscapeKeyDown={handleClose}
         dialogClassName="bg-indigo result-modal"
         >
         <Modal.Header closeButton>

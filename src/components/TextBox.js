@@ -99,7 +99,8 @@ export class TextBox extends React.Component{
       errors: [],
       currIdx: 0,
       started: false
-    })
+    });
+    this.getQuote();
     //TODO reset function bound to a key (left ctrl maybe) resets word list without refresh
     // return focus to input
   }

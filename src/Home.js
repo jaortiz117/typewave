@@ -39,6 +39,7 @@ export function Home(){
 
   const resultToggle = () => {
     if(showResults){
+      window.location.reload(false);
       setShowResults(false);
     }
     else{
