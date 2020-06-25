@@ -8,8 +8,8 @@ import { Result } from './components/Result'
 const Styles = styled.div`
 text-align: center;
 
-.bg-royal{
-  background-color: hsla(227, 74%, 35%, 1);
+.bg-indigo{
+  background-color: #003d5bff;
 }
 
 .title{
@@ -18,12 +18,8 @@ text-align: center;
   font-size: calc(12px + 2vmin);
 }
 
-.champagne{
-  color: hsla(35, 18%, 96%, 1);
-}
-
-.carnelian{
-  color: hsla(0, 84%, 74%, 1);
+.brick{
+  color: #D1495B;
 }
 
 .centerblock{
@@ -43,7 +39,7 @@ export function Home(){
   return (
     <Styles>
       <Result items={items}/>
-      <div className="title carnelian">
+      <div className="title">
         Relax while typing.
       </div>
       <div className="centerblock">

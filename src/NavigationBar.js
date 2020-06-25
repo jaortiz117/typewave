@@ -5,12 +5,12 @@ import styled from 'styled-components'
 import icon from './temp_logo.png';
 
 const Styles = styled.div`
-.bg-royal{
-  background-color: hsla(227, 74%, 35%, 1);
+.bg-indigo{
+  background-color: #003d5bff;
 }
 
-.champagne{
-  color: hsla(35, 18%, 96%, 1);
+.nav-title{
+  color: white;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
@@ -21,7 +21,7 @@ const Styles = styled.div`
 export function NavigationBar(){
   return (
     <Styles>
-      <Navbar bg="royal">
+      <Navbar bg="indigo">
         <Navbar.Brand href="#home">
           <img
             alt=""
@@ -31,7 +31,7 @@ export function NavigationBar(){
             className="d-inline-block align-top"
             />{' '}
           </Navbar.Brand>
-          <Navbar.Brand className="champagne">
+          <Navbar.Brand className="nav-title">
             Ocean Typing
           </Navbar.Brand>
         </Navbar>

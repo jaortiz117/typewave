@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Styles = styled.div`
-.bg-royal{
-  background-color: hsla(227, 74%, 35%, 1);
+.bg-indigo{
+  background-color: #003d5bff;
 }
 
 .title{
@@ -12,8 +12,12 @@ const Styles = styled.div`
   font-size: calc(12px + 2vmin);
 }
 
-.champagne{
-  color: hsla(35, 18%, 96%, 1);
+.seaweed{
+  color: #00798c;
+}
+
+.sunray{
+  color: #edae49ff;
 }
 
 .input_area {
@@ -27,12 +31,12 @@ const Styles = styled.div`
   box-shadow: black 5px 8px 5px;
 }
 
-.carnelian{
-  color: hsla(0, 84%, 74%, 1);
+.brick{
+  color: #D1495B;
 }
 
-.m-red{
-  color: hsla(10, 47%, 85%, 1);
+.lapis{
+  color: #30638eff;
 }
 
 .text{
@@ -118,8 +122,8 @@ export class TextBox extends React.Component{
     const word = this.state.inserted[idx];
     try{
       const smallest = Math.min(word.length, this.state.quote[idx].length);
-      this.wordRefs[idx].classList.remove('champagne');
-      this.wordRefs[idx].classList.remove('carnelian');
+      this.wordRefs[idx].classList.remove('lapis');
+      this.wordRefs[idx].classList.remove('brick');
       this.wordRefs[idx].innerHTML = this.state.quote[idx] + " ";
 
       var errorsInWord = 0;
@@ -131,10 +135,10 @@ export class TextBox extends React.Component{
         const textLength = this.wordRefs[idx].innerText.length;
 
         if(word.charAt(i) === this.state.quote[idx].charAt(i)){
-          this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"champagne\">"+ char+ "</span>");
+          this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"sunray\">"+ char+ "</span>");
         }
         if(word.charAt(i) !== this.state.quote[idx].charAt(i)){
-          this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"carnelian\">"+ char+ "</span>");
+          this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"brick\">"+ char+ "</span>");
 
           errorsInWord += 1;
         }
@@ -176,10 +180,10 @@ export class TextBox extends React.Component{
 render(){
   return (
     <Styles>
-      <div className="text m-red">
+      <div className="text seaweed">
         {this.renderLetters()}
       </div>
-      <input className=" bg-royal champagne input_area"
+      <input className=" bg-indigo lapis input_area"
         placeholder="start typing here..."
         onChange={ this.handleInput }
         autoFocus={true}

@@ -6,9 +6,9 @@ import { Home } from './Home'
 import './App.css';
 
 const Styles = styled.div`{
-  background-color: hsla(227, 74%, 35%, 1);
+  background-color: #003d5bff;
   min-height: 100vh;
-  color: hsla(35, 18%, 96%, 1);
+  color: white;
 }
 `;
 

@@ -69,9 +69,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ## Color scheme:
 ```
---sunray: hsla(37, 69%, 93%, 1);
---brick-red: hsla(352, 65%, 82%, 1);
---metallic-seaweed: hsla(188, 100%, 55%, 1);
---lapis-lazuli: hsla(207, 66%, 56%, 1);
---indigo-dye: hsla(200, 100%, 36%, 1);
+$sunray: #edae49ff;
+$brick-red: #D1495B;
+$metallic-seaweed: #00798c;
+$lapis-lazuli: #30638eff;
+$indigo-dye: #003d5bff;
 ```
