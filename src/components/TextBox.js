@@ -69,7 +69,8 @@ export class TextBox extends React.Component{
   }
 
   getQuote(){
-    var temp_quote = "For the text we will create a function that fetches 45 60 random words from a list of the 200 most commonly used words in the english language. This text box has to be sized similar to input box and the font needs some oppacity so we apply full color whe a word is written".split(" ");
+    // var temp_quote = "For the text we will create a function that fetches 45 60 random words from a list of the 200 most commonly used words in the english language. This text box has to be sized similar to input box and the font needs some oppacity so we apply full color whe a word is written".split(" ");
+    var temp_quote = "Hello World it is fine".split(" ");
     this.setState({quote: temp_quote})
   }
 

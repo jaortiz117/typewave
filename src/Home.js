@@ -36,8 +36,13 @@ text-align: center;
 `;
 
 export function Home(){
+  const items = [
+      {name: "wpm", label: "WPM", data: "123"},
+      {name: "errors", label: "Mistakes", data: "3"}
+    ];
   return (
     <Styles>
+      <Result items={items}/>
       <div className="title carnelian">
         Relax while typing.
       </div>

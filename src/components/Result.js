@@ -1,5 +1,5 @@
-import React from 'react'
-import { Navbar } from 'react-bootstrap'
+import React, { useState } from 'react';
+import { ListGroup, Modal } from 'react-bootstrap';
 import styled from 'styled-components'
 
 const Styles = styled.div`
@@ -19,10 +19,40 @@ const Styles = styled.div`
 }
 `;
 
-export function Result(){
-  return (
-    <Styles>
+export function Result(props){
+  const [show, setShow] = useState(true);
 
-      </Styles>
-    );
+  const handleClose = () => {
+    setShow(false);
+    if(props.onClose instanceof Function){
+      props.onClose();
+    }
   }
+  const handleShow = () => setShow(true);
+
+
+  return (
+    <React.Fragment>
+      <Styles>
+      <Modal
+        dialogClassName="side-modal"
+        show={show}
+        onHide={handleClose}
+        >
+        <Modal.Header closeButton>
+          <Modal.Title>Results: </Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <ListGroup>
+            {props.items.map(({label, name, data}) =>(
+              <ListGroup.Item action variant="primary" key={name}>
+                {label}: {data}
+              </ListGroup.Item>
+            ))}
+          </ListGroup>
+        </Modal.Body>
+      </Modal>
+      </Styles>
+    </React.Fragment>
+  );
+}

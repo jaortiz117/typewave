@@ -69,10 +69,9 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/tr
 
 ## Color scheme:
 ```
-/* CSS */
---midnight-blue: hsla(234, 78%, 44%, 1);
---royal-blue-dark: hsla(227, 74%, 35%, 1);
---champagne: hsla(35, 18%, 96%, 1);
---middle-red: hsla(10, 47%, 85%, 1);
---carnelian: hsla(0, 84%, 74%, 1);
+--sunray: hsla(37, 69%, 93%, 1);
+--brick-red: hsla(352, 65%, 82%, 1);
+--metallic-seaweed: hsla(188, 100%, 55%, 1);
+--lapis-lazuli: hsla(207, 66%, 56%, 1);
+--indigo-dye: hsla(200, 100%, 36%, 1);
 ```
