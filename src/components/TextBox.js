@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import randomWords from "random-words";
 
 const Styles = styled.div`
 .bg-indigo{
@@ -76,8 +77,9 @@ export class TextBox extends React.Component{
   }
 
   getQuote(){
-    var temp_quote = "Hello World it is fine".split(" ");
-    this.setState({quote: temp_quote})
+    // var temp_quote = "Hello World it is fine".split(" ");
+    // this.setState({quote: temp_quote})
+    this.setState({quote: randomWords({ min: 45, max: 60 })})
   }
 
   componentDidMount(){

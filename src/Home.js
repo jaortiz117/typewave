@@ -64,8 +64,6 @@ export function Home(){
     ];
 
     setResults(items);
-    console.log(items);
-    console.log(results);
     resultToggle();
   }
 
