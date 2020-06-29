@@ -1,6 +1,8 @@
 import React from 'react'
 import { Navbar } from 'react-bootstrap'
 import styled from 'styled-components'
+import { ReactComponent as GithubSvg } from 'simple-icons/icons/github.svg'
+// import github from 'simple-icons/icons/github.svg';
 
 import icon from './temp_logo.png';
 
@@ -14,6 +16,12 @@ const Styles = styled.div`
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
+}
+
+.svg{
+  fill: white;
+  height: 40px;
+  width: 40px;
 }
 }
 `;
@@ -34,7 +42,12 @@ export function NavigationBar(){
           <Navbar.Brand className="nav-title">
             Ocean Typing
           </Navbar.Brand>
-        </Navbar>
-      </Styles>
-    );
-  }
+          <Navbar.Brand
+            href="https://github.com/jaortiz117/typing-test-pwa"
+            className="ml-auto">
+            <GithubSvg className='svg' />
+            </Navbar.Brand>
+          </Navbar>
+        </Styles>
+      );
+    }
