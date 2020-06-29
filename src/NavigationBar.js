@@ -2,7 +2,6 @@ import React from 'react'
 import { Navbar } from 'react-bootstrap'
 import styled from 'styled-components'
 import { ReactComponent as GithubSvg } from 'simple-icons/icons/github.svg'
-// import github from 'simple-icons/icons/github.svg';
 
 import icon from './temp_logo.png';
 
@@ -22,7 +21,6 @@ const Styles = styled.div`
   fill: white;
   height: 40px;
   width: 40px;
-}
 }
 `;
 
@@ -46,8 +44,8 @@ export function NavigationBar(){
             href="https://github.com/jaortiz117/typing-test-pwa"
             className="ml-auto">
             <GithubSvg className='svg' />
-            </Navbar.Brand>
-          </Navbar>
-        </Styles>
-      );
-    }
+          </Navbar.Brand>
+        </Navbar>
+      </Styles>
+    );
+  }
