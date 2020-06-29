@@ -9,6 +9,21 @@ const Styles = styled.div`{
   background-color: #003d5bff;
   min-height: 100vh;
   color: white;
+
+  /*
+  * Footer
+  */
+  .foot {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+  }
+  .heart{
+    color: #e25555;
+  }
 }
 `;
 
@@ -18,10 +33,15 @@ function App() {
       <Styles>
         <NavigationBar />
         <Home />
-        <p>Footer placeholder</p>
-      </Styles>
-    </React.Fragment>
-  );
-}
+        <footer className="foot">
+          <div>
+            <p>Made with <span className="heart">&#9829;</span> in PR by
+              <a href="https://twitter.com/ogjavijavs">@ogjavijavs</a>.</p>
+            </div>
+          </footer>
+        </Styles>
+      </React.Fragment>
+    );
+  }
 
-export default App;
+  export default App;
