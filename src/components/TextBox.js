@@ -43,6 +43,7 @@ const Styles = styled.div`
 .text{
   align-items: center;
   justify-content: center;
+  text-align: left;
   font-size: 1.5rem;
   margin: 10px;
   padding: 25px;
