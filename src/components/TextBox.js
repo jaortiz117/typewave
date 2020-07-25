@@ -150,7 +150,11 @@ export class TextBox extends React.Component{
         var char = this.state.quote[idx].charAt(i);
 
         const inner = this.wordRefs[idx].innerHTML;
-        const textLength = this.wordRefs[idx].innerText.length;
+        var textLength = this.wordRefs[idx].innerText.length;
+
+        if(idx === this.wordRefs.length - 1){
+          textLength = textLength + 1;
+        }
 
         if(word.charAt(i) === this.state.quote[idx].charAt(i)){
           this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"sunray\">"+ char+ "</span>");
