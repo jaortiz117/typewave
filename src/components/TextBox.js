@@ -90,7 +90,6 @@ export class TextBox extends React.Component{
       input: '',
       finished: false,
       inserted: [],
-      quote: ["loading", "please", "wait"],
       textEntered: false,
       startTime: null,
       finalTime: null,
@@ -99,7 +98,7 @@ export class TextBox extends React.Component{
       currIdx: 0,
       started: false
     });
-    this.getQuote();
+    // this.getQuote();
     //TODO reset function bound to a key (left ctrl maybe) resets word list without refresh
     // return focus to input
   }
