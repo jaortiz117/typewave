@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "eb523037f2b3c6b75c3f3cb831644fb6",
+    "revision": "284f2bb8a51088448d109fb5435343e5",
     "url": "/typewave/index.html"
   },
   {
