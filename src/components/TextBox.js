@@ -78,8 +78,6 @@ export class TextBox extends React.Component{
   }
 
   getQuote(){
-    // var temp_quote = "Hello World it is fine".split(" ");
-    // this.setState({quote: temp_quote})
     this.setState({quote: randomWords({ min: 30, max: 45 })})
   }
 
