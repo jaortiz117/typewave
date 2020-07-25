@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/typewave/static/css/main.ded5d3c8.chunk.css",
+    "main.js": "/typewave/static/js/main.b139e3b8.chunk.js",
+    "main.js.map": "/typewave/static/js/main.b139e3b8.chunk.js.map",
+    "runtime-main.js": "/typewave/static/js/runtime-main.d541b057.js",
+    "runtime-main.js.map": "/typewave/static/js/runtime-main.d541b057.js.map",
+    "static/css/2.af3c1da9.chunk.css": "/typewave/static/css/2.af3c1da9.chunk.css",
+    "static/js/2.d3e939ae.chunk.js": "/typewave/static/js/2.d3e939ae.chunk.js",
+    "static/js/2.d3e939ae.chunk.js.map": "/typewave/static/js/2.d3e939ae.chunk.js.map",
+    "index.html": "/typewave/index.html",
+    "precache-manifest.6e1ee2309712a45c943e0f424667faa5.js": "/typewave/precache-manifest.6e1ee2309712a45c943e0f424667faa5.js",
+    "service-worker.js": "/typewave/service-worker.js",
+    "static/css/2.af3c1da9.chunk.css.map": "/typewave/static/css/2.af3c1da9.chunk.css.map",
+    "static/css/main.ded5d3c8.chunk.css.map": "/typewave/static/css/main.ded5d3c8.chunk.css.map",
+    "static/js/2.d3e939ae.chunk.js.LICENSE.txt": "/typewave/static/js/2.d3e939ae.chunk.js.LICENSE.txt",
+    "static/media/github.svg": "/typewave/static/media/github.617870e4.svg",
+    "static/media/logo.svg": "/typewave/static/media/logo.5d5d9eef.svg",
+    "static/media/tw-logo.png": "/typewave/static/media/tw-logo.2001f2e6.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d541b057.js",
+    "static/css/2.af3c1da9.chunk.css",
+    "static/js/2.d3e939ae.chunk.js",
+    "static/css/main.ded5d3c8.chunk.css",
+    "static/js/main.b139e3b8.chunk.js"
+  ]
+}
