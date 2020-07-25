@@ -3,7 +3,7 @@ import { Navbar } from 'react-bootstrap'
 import styled from 'styled-components'
 import { ReactComponent as GithubSvg } from 'simple-icons/icons/github.svg'
 
-import icon from './logo.svg';
+import icon from './tw-logo.png';
 
 const Styles = styled.div`
 .bg-indigo{
