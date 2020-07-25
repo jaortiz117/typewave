@@ -93,3 +93,8 @@ $metallic-seaweed: #00798c;
 $lapis-lazuli: #30638eff;
 $indigo-dye: #003d5bff;
 ```
+
+## Future Ideas
+- Infinite mode
+  - type infinitely. Generate new paragraphs after you are done with the current one.
+  - show your results per paragraph on the side or top instead of a modal so you can keep typing.
