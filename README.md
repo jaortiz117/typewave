@@ -1,7 +1,7 @@
 # Relaxing typing test
 Similar to other typing speed websites. this is built as a PWA so you can type while offline.
 
-Demo: [Coming Soon!](#)
+Use the demo: [typewave.](https://jaortiz117.github.io/typewave/)
 
 ## Features:
 - Relaxing color scheme
