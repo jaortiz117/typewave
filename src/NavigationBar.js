@@ -38,7 +38,7 @@ export function NavigationBar(){
             />{' '}
           </Navbar.Brand>
           <Navbar.Brand className="nav-title">
-            Ocean Typing
+            Typing Therapy
           </Navbar.Brand>
           <Navbar.Brand
             href="https://github.com/jaortiz117/typing-test-pwa"
