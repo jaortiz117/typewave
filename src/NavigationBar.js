@@ -3,7 +3,7 @@ import { Navbar } from 'react-bootstrap'
 import styled from 'styled-components'
 import { ReactComponent as GithubSvg } from 'simple-icons/icons/github.svg'
 
-import icon from './temp_logo.png';
+import icon from './logo.svg';
 
 const Styles = styled.div`
 .bg-indigo{
@@ -38,7 +38,7 @@ export function NavigationBar(){
             />{' '}
           </Navbar.Brand>
           <Navbar.Brand className="nav-title">
-            Typing Therapy
+            typewave.
           </Navbar.Brand>
           <Navbar.Brand
             href="https://github.com/jaortiz117/typing-test-pwa"
