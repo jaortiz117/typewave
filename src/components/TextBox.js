@@ -241,24 +241,6 @@ render(){
 }
 }
 
-
-// we can use this as guide https://www.geeksforgeeks.org/design-a-typing-speed-test-game-using-javascript/
-// other possible sources:
-// https://github.com/DanOswalt/react-typing-test-app/blob/master/src/App.js
-//
 // inspiration:
 // https://typing.works/
 // https://monkey-type.com/
-//TODO
-//
-// basically we need the following:
-// - the text is a rand set of the 200 most commonly used words
-// - the functions are probably better off within the TextBox file
-// - we need to check the text box onchange for the text box
-//   - we color the wrong characters red (simple string compare and change color at idx)
-//   - when user is done with word (spacebar) we skip to next word (reset box)
-// - we reset the text box after every word
-//   - clear the text box
-//   - if word is wrong color red, if correct color properly
-// - when the user starts typing we start the timer.
-// - when user is done with word set we return result modal
