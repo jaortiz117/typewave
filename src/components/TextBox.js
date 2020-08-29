@@ -209,10 +209,16 @@ calcErrors = () => {
 }
 
 calcWpm = () => {
-  const words = this.state.quote.length;
+  const avgChPerWord = 5;
+  const spaces = this.state.quote.length;
+  var chars = 0;
+  this.state.quote.forEach(word => {
+    chars += word.length;
+  });
+
   const totalTime = (this.state.finalTime - this.state.startTime) / 1000;
 
-  return Math.floor((words / totalTime) * 60);
+  return Math.floor(((chars + spaces) / totalTime) * 60) / avgChPerWord;
 }
 
 finishHandler(){
