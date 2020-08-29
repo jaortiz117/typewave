@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "284f2bb8a51088448d109fb5435343e5",
+    "revision": "81b29208ab86eec0ea5b05e4822b4ba3",
     "url": "/typewave/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/typewave/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "560026f805118fad4147",
+    "revision": "815f1d3d003b7cceb70c",
     "url": "/typewave/static/css/main.ded5d3c8.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/typewave/static/js/2.d3e939ae.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "560026f805118fad4147",
-    "url": "/typewave/static/js/main.b139e3b8.chunk.js"
+    "revision": "815f1d3d003b7cceb70c",
+    "url": "/typewave/static/js/main.9b53bb50.chunk.js"
   },
   {
     "revision": "26a91ef71cb47a12ab16",

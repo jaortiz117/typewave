@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/typewave/static/css/main.ded5d3c8.chunk.css",
-    "main.js": "/typewave/static/js/main.b139e3b8.chunk.js",
-    "main.js.map": "/typewave/static/js/main.b139e3b8.chunk.js.map",
+    "main.js": "/typewave/static/js/main.9b53bb50.chunk.js",
+    "main.js.map": "/typewave/static/js/main.9b53bb50.chunk.js.map",
     "runtime-main.js": "/typewave/static/js/runtime-main.d541b057.js",
     "runtime-main.js.map": "/typewave/static/js/runtime-main.d541b057.js.map",
     "static/css/2.af3c1da9.chunk.css": "/typewave/static/css/2.af3c1da9.chunk.css",
     "static/js/2.d3e939ae.chunk.js": "/typewave/static/js/2.d3e939ae.chunk.js",
     "static/js/2.d3e939ae.chunk.js.map": "/typewave/static/js/2.d3e939ae.chunk.js.map",
     "index.html": "/typewave/index.html",
-    "precache-manifest.a2705dc7494c831d7370d4c4aa71efa6.js": "/typewave/precache-manifest.a2705dc7494c831d7370d4c4aa71efa6.js",
+    "precache-manifest.f21da851aa7e40d3798f28c5a8e72b13.js": "/typewave/precache-manifest.f21da851aa7e40d3798f28c5a8e72b13.js",
     "service-worker.js": "/typewave/service-worker.js",
     "static/css/2.af3c1da9.chunk.css.map": "/typewave/static/css/2.af3c1da9.chunk.css.map",
     "static/css/main.ded5d3c8.chunk.css.map": "/typewave/static/css/main.ded5d3c8.chunk.css.map",
@@ -23,6 +23,6 @@
     "static/css/2.af3c1da9.chunk.css",
     "static/js/2.d3e939ae.chunk.js",
     "static/css/main.ded5d3c8.chunk.css",
-    "static/js/main.b139e3b8.chunk.js"
+    "static/js/main.9b53bb50.chunk.js"
   ]
 }
