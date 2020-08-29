@@ -78,7 +78,7 @@ export class TextBox extends React.Component{
   }
 
   getQuote(){
-    this.setState({quote: randomWords({ min: 30, max: 45 })})
+    this.setState({quote: randomWords({ min: 20, max: 30 })})
   }
 
   componentDidMount(){
@@ -218,7 +218,7 @@ calcWpm = () => {
 
   const totalTime = (this.state.finalTime - this.state.startTime) / 1000;
 
-  return Math.floor(((chars + spaces) / totalTime) * 60) / avgChPerWord;
+  return Math.floor(((chars + spaces) / totalTime) * 60 / avgChPerWord);
 }
 
 finishHandler(){
