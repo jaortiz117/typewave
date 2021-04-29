@@ -92,6 +92,7 @@ $brick-red: #D1495B;
 $metallic-seaweed: #00798c;
 $lapis-lazuli: #30638eff;
 $indigo-dye: #003d5bff;
+$correct-letter: #6AEBFF;
 ```
 
 ## Future Ideas
