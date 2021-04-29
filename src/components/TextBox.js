@@ -21,6 +21,10 @@ const Styles = styled.div`
   color: #edae49ff;
 }
 
+.correct-letter{
+  color: #6AEBFF;
+}
+
 .input_area {
   height: 80px;
   width: 40%;
@@ -156,7 +160,7 @@ export class TextBox extends React.Component{
         }
 
         if(word.charAt(i) === this.state.quote[idx].charAt(i)){
-          this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"sunray\">"+ char+ "</span>");
+          this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"correct-letter\">"+ char+ "</span>");
         }
         if(word.charAt(i) !== this.state.quote[idx].charAt(i)){
           this.wordRefs[idx].innerHTML = this.setCharAt(inner, inner.length - textLength + i, "<span class=\"brick\">"+ char+ "</span>");
