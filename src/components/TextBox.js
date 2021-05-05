@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import randomWords from "random-words";
+import { TextButton } from "./TextButton"
 
 const Styles = styled.div`
 .bg-indigo{
@@ -77,6 +78,7 @@ export class TextBox extends React.Component{
     this.renderLetters = this.renderLetters.bind(this);
     this.errorCounter = this.errorCounter.bind(this);
     this.finishHandler = this.finishHandler.bind(this);
+    this.renderButton = this.renderButton.bind(this);
 
     this.wordRefs = [];
   }
@@ -234,6 +236,16 @@ finishHandler(){
   }
 }
 
+renderButton(){
+  return(
+    <a>
+      {
+        <span className="loop">&#8635;</span>
+      }
+    </a>
+  );
+}
+
 render(){
   return (
     <Styles>
@@ -247,6 +259,14 @@ render(){
         autoFocus={true}
         >
       </input>
+      <div>
+      <TextButton
+        className = "text"
+        tooltip = "Restart"
+        onClick = {() => this.reset()}
+        renderable = {this.renderButton()}
+        ></TextButton>
+      </div>
     </Styles>
   );
 }
