@@ -32,7 +32,6 @@ export function TextButton(props){
 
   return (
     <React.Fragment>
-      {console.log(props)}
       <OverlayTrigger
         placement = "bottom"
         delay = {{ show: 100, hide: 400 }}
