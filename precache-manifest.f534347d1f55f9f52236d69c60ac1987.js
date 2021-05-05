@@ -1,27 +1,27 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e5a1769417238b45bb7ec38aa4fd675f",
+    "revision": "a02743d2420891cca11d7027476cda90",
     "url": "/typewave/index.html"
   },
   {
-    "revision": "f954c3709e4217ec0773",
+    "revision": "a8e70c00ef9085beb7dc",
     "url": "/typewave/static/css/2.af3c1da9.chunk.css"
   },
   {
-    "revision": "2325d84f3d60283e21ee",
+    "revision": "d414af349d394d5f1b02",
     "url": "/typewave/static/css/main.ded5d3c8.chunk.css"
   },
   {
-    "revision": "f954c3709e4217ec0773",
-    "url": "/typewave/static/js/2.d3e939ae.chunk.js"
+    "revision": "a8e70c00ef9085beb7dc",
+    "url": "/typewave/static/js/2.b31c5107.chunk.js"
   },
   {
     "revision": "3453b8997016469371284a28c0e873e2",
-    "url": "/typewave/static/js/2.d3e939ae.chunk.js.LICENSE.txt"
+    "url": "/typewave/static/js/2.b31c5107.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "2325d84f3d60283e21ee",
-    "url": "/typewave/static/js/main.43d6407c.chunk.js"
+    "revision": "d414af349d394d5f1b02",
+    "url": "/typewave/static/js/main.467d9f55.chunk.js"
   },
   {
     "revision": "26a91ef71cb47a12ab16",
