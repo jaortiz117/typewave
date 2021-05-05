@@ -103,10 +103,24 @@ export class TextBox extends React.Component{
       errors: [],
       currIdx: 0,
       started: false
+    }, () => {
+      window.location.reload(false);
     });
-    // this.getQuote();
-    //TODO reset function bound to a key (left ctrl maybe) resets word list without refresh
-    // return focus to input
+  }
+
+  done = (e) => {
+    this.setState({
+      input: '',
+      finished: false,
+      inserted: [],
+      textEntered: false,
+      startTime: null,
+      finalTime: null,
+      wpm: 0,
+      errors: [],
+      currIdx: 0,
+      started: false
+    });
   }
 
   handleInput = (e) => {
@@ -232,7 +246,7 @@ finishHandler(){
     const errors = this.calcErrors();
     const wpm = this.calcWpm();
     this.props.onFinish(errors, wpm);
-    this.reset()
+    this.done();
   }
 }
 
@@ -253,19 +267,19 @@ render(){
         {this.renderLetters()}
         {this.finishHandler()}
       </div>
-      <input className=" bg-indigo lapis input_area"
+      <input autoFocus className=" bg-indigo lapis input_area"
         placeholder="start typing here..."
         onChange={ this.handleInput }
         autoFocus={true}
         >
       </input>
       <div>
-      <TextButton
-        className = "text"
-        tooltip = "Restart"
-        onClick = {() => this.reset()}
-        renderable = {this.renderButton()}
-        ></TextButton>
+        <TextButton
+          className = "text"
+          tooltip = "Restart"
+          onClick = {() => this.reset()}
+          renderable = {this.renderButton()}
+          ></TextButton>
       </div>
     </Styles>
   );
